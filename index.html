@@ -148,23 +148,21 @@
     }
 
     /* Glassmorphism Widget */
-.glass-widget {
-  background: rgba(20, 40, 60, 0.3); /* Уменьшили прозрачность */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(74, 158, 255, 0.2);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 40px 0;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Уменьшили тень */
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  /* Добавим градиент для мягкости */
-  background: linear-gradient(135deg, rgba(20, 40, 60, 0.2), rgba(30, 60, 90, 0.1));
-}
+    .glass-widget {
+      background: transparent; /* Убран фон */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 40px 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05); /* Уменьшена тень */
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
 
     .glass-widget:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0, 247, 255, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 247, 255, 0.2);
     }
 
     /* Features */
@@ -181,7 +179,6 @@
       border-radius: 12px;
       padding: 20px;
       transition: transform 0.4s ease, border-color 0.4s ease;
-      /* Добавляем постоянный дрейф */
       animation: drift 10s ease-in-out infinite;
     }
 
@@ -242,6 +239,29 @@
       margin-bottom: 30px;
     }
 
+    /* Menu Preview Section */
+    #menu-preview {
+      padding: 80px 0;
+    }
+
+    #menu-preview h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #00f7ff;
+    }
+
+    .menu-image-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .menu-image-container img {
+      max-width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -279,7 +299,7 @@
           AnarchyUtils — это не просто мод для Minecraft, это инструмент для тех, кто хочет выделиться и получить максимум от игрового процесса. Наш мод объединяет в себе мощные утилиты, визуальные улучшения, удобный интерфейс и безопасность. Мы создаём продукт, который делает игру комфортнее, быстрее и красивее.
         </p>
         <p class="about-text">
-          Разработка ведётся с 2025 года, и с каждым обновлением мы добавляем всё больше функций, улучшаем производительность и делаем интерфейс ещё удобнее. Мы стремимся к тому, чтобы AnarchyUtils стал неотъемлемой частью игрового опыта каждого пользователя.
+          Разработка ведётся с 2024 года, и с каждым обновлением мы добавляем всё больше функций, улучшаем производительность и делаем интерфейс ещё удобнее. Мы стремимся к тому, чтобы AnarchyUtils стал неотъемлемой частью игрового опыта каждого пользователя.
         </p>
         <p class="about-text">
           Наши пользователи получают:
@@ -352,18 +372,24 @@
           </ul>
         </div>
         <div class="feature-card drift">
-  <h3>💻 Меню (Hyper GUI)</h3>
-  <ul>
-    <li>Дизайн: Современный интерфейс в стиле "Glassmorphism" с размытием, анимациями и звуками.</li>
-    <li>Themes: 15 встроенных цветовых тем (Cyberpunk, Amethyst, Gold, Toxic и др.), меняющих вид всего клиента в один клик.</li>
-    <li>Search: Быстрый поиск модулей по названию.</li>
-    <li>Configs: Система сохранения и загрузки настроек.</li>
-  </ul>
-  <div style="margin-top: 20px; text-align: center;">
-    <img src="preview.jpg" alt="AnarchyUtils Menu Preview" 
-         style="max-width: 100%; border-radius: 12px; border: 1px solid rgba(74, 158, 255, 0.3); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);">
-  </div>
-</div>
+          <h3>💻 Меню (Hyper GUI)</h3>
+          <ul>
+            <li>Дизайн: Современный интерфейс в стиле "Glassmorphism" с размытием, анимациями и звуками.</li>
+            <li>Themes: 15 встроенных цветовых тем (Cyberpunk, Amethyst, Gold, Toxic и др.), меняющих вид всего клиента в один клик.</li>
+            <li>Search: Быстрый поиск модулей по названию.</li>
+            <li>Configs: Система сохранения и загрузки настроек.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW: Menu Preview Section -->
+    <section id="menu-preview" class="fade-in-up">
+      <h2>Предпросмотр меню</h2>
+      <div class="glass-widget drift">
+        <div class="menu-image-container">
+          <img src="preview.jpg" alt="AnarchyUtils Menu Preview">
+        </div>
       </div>
     </section>
 
@@ -386,15 +412,15 @@
       <h2 style="text-align: center; margin: 40px 0 30px; color: #00f7ff;">Часто задаваемые вопросы</h2>
       <div class="glass-widget drift">
         <p class="about-text">
-          <strong>P: Совместим ли мод с другими модами?</strong><br>
+          <strong>Q: Совместим ли мод с другими модами?</strong><br>
           A: Да, AnarchyUtils совместим с большинством популярных модов. Мы тестируем совместимость с Forge и Fabric.
         </p>
         <p class="about-text">
-          <strong>P: Можно ли вернуть деньги?</strong><br>
+          <strong>Q: Можно ли вернуть деньги?</strong><br>
           A: Возврат возможен только в течение 24 часов после покупки, если мод не был активирован.
         </p>
         <p class="about-text">
-          <strong>P: Как происходит активация?</strong><br>
+          <strong>Q: Как происходит активация?</strong><br>
           A: После оплаты вы получите уникальный HWID-ключ, который нужно ввести в моде. Он привязывается к вашему ПК.
         </p>
       </div>
@@ -462,21 +488,21 @@
     canvas.height = window.innerHeight;
 
     const snowflakes = [];
-    const numSnowflakes = 60; // Уменьшили количество
+    const numSnowflakes = 60;
 
     class Snowflake {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1; // Уменьшили размер
-        this.speed = Math.random() * 0.3 + 0.1; // Уменьшили скорость
+        this.size = Math.random() * 2 + 1;
+        this.speed = Math.random() * 0.3 + 0.1;
         this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = Math.random() * 0.005 - 0.0025; // Уменьшили вращение
+        this.angleSpeed = Math.random() * 0.005 - 0.0025;
       }
 
       update() {
         this.y += this.speed;
-        this.x += Math.sin(this.angle) * 0.1; // Уменьшили смещение
+        this.x += Math.sin(this.angle) * 0.1;
         this.angle += this.angleSpeed;
 
         if (this.y > canvas.height) {
@@ -488,7 +514,7 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(200, 240, 255, 0.6)'; // Уменьшили прозрачность
+        ctx.fillStyle = 'rgba(200, 240, 255, 0.6)';
         ctx.fill();
       }
     }
