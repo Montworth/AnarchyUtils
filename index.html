@@ -68,6 +68,19 @@
       transform: translateY(0);
     }
 
+    /* Постоянный дрейф */
+    .drift {
+      animation: drift 6s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(3px, -3px); }
+      50% { transform: translate(0, -5px); }
+      75% { transform: translate(-3px, -3px); }
+      100% { transform: translate(0, 0); }
+    }
+
     /* Header */
     header {
       padding: 100px 0 60px;
@@ -145,6 +158,8 @@
       margin: 40px 0;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      /* Добавляем постоянный дрейф */
+      animation: drift 8s ease-in-out infinite;
     }
 
     .glass-widget:hover {
@@ -166,6 +181,8 @@
       border-radius: 12px;
       padding: 20px;
       transition: transform 0.4s ease, border-color 0.4s ease;
+      /* Добавляем постоянный дрейф */
+      animation: drift 10s ease-in-out infinite;
     }
 
     .feature-card:hover {
@@ -257,7 +274,7 @@
 
     <section id="about" class="fade-in-up">
       <h2>О проекте AnarchyUtils</h2>
-      <div class="glass-widget">
+      <div class="glass-widget drift">
         <p class="about-text">
           AnarchyUtils — это не просто мод для Minecraft, это инструмент для тех, кто хочет выделиться и получить максимум от игрового процесса. Наш мод объединяет в себе мощные утилиты, визуальные улучшения, удобный интерфейс и безопасность. Мы создаём продукт, который делает игру комфортнее, быстрее и красивее.
         </p>
@@ -279,7 +296,7 @@
     <section id="features" class="fade-in-up">
       <h2 style="text-align: center; margin: 40px 0 30px; color: #00f7ff;">Возможности мода</h2>
       <div class="features">
-        <div class="feature-card">
+        <div class="feature-card drift">
           <h3>Utility & Combat (Полезное)</h3>
           <ul>
             <li>Save Swap / Auto Totem: Автоматически берет тотем в левую руку при низком здоровье или по нажатию клавиши.</li>
@@ -287,7 +304,7 @@
             <li>Item To Offhand: Быстрое перемещение предмета из 9-го слота в левую руку.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card drift">
           <h3>👁 Render (Рендер)</h3>
           <ul>
             <li>Zoom: Плавное приближение камеры (как в OptiFine) с настройкой силы зума.</li>
@@ -300,7 +317,7 @@
             <li>Shulker Preview: Показывает содержимое шалкера в подсказке при наведении в инвентаре.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card drift">
           <h3>🎨 Visual (Визуал)</h3>
           <ul>
             <li>China Hat: 3D-шляпа в китайском стиле над головой игрока (и друзей). Поддерживает градиенты и вращение.</li>
@@ -311,7 +328,7 @@
             <li>Shield Sphere: При блокировании щитом вокруг игрока появляется полупрозрачная защитная сфера.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card drift">
           <h3>◧ HUD (Интерфейс)</h3>
           <ul>
             <li>Target HUD: Стильная панель с информацией о цели (3D модель, здоровье с анимацией, броня).</li>
@@ -325,7 +342,7 @@
             <li>HUD Editor: Визуальный редактор для перемещения элементов HUD мышкой.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card drift">
           <h3>⚙️ Quality of Life (Удобство)</h3>
           <ul>
             <li>Middle Click Friend (MCF): Добавление игрока в друзья нажатием колесика мыши (на друзей не агрится киллаура, у них цветная подсветка/шляпа).</li>
@@ -334,7 +351,7 @@
             <li>Low Fire: Убирает/опускает текстуру огня на экране (визуально).</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card drift">
           <h3>💻 Меню (Hyper GUI)</h3>
           <ul>
             <li>Дизайн: Современный интерфейс в стиле "Glassmorphism" с размытием, анимациями и звуками.</li>
@@ -348,7 +365,7 @@
 
     <section class="fade-in-up">
       <h2 style="text-align: center; margin: 40px 0 30px; color: #00f7ff;">Что говорят пользователи</h2>
-      <div class="glass-widget">
+      <div class="glass-widget drift">
         <p class="about-text">
           "AnarchyUtils — это мод, которого мне не хватало. Он не тормозит, красиво выглядит и удобен в использовании. Спасибо разработчику!" — <strong>Player_123</strong>
         </p>
@@ -363,7 +380,7 @@
 
     <section class="fade-in-up">
       <h2 style="text-align: center; margin: 40px 0 30px; color: #00f7ff;">Часто задаваемые вопросы</h2>
-      <div class="glass-widget">
+      <div class="glass-widget drift">
         <p class="about-text">
           <strong>Q: Совместим ли мод с другими модами?</strong><br>
           A: Да, AnarchyUtils совместим с большинством популярных модов. Мы тестируем совместимость с Forge и Fabric.
@@ -381,7 +398,7 @@
 
     <section id="buy" class="fade-in-up">
       <h2>Получи доступ сейчас</h2>
-      <div class="glass-widget">
+      <div class="glass-widget drift">
         <div class="pricing">Всего 100 ₽</div>
         <p style="max-width: 600px; margin: 0 auto 30px; color: #ccffff;">
           Оплата переводом по СБП или на карту. Сразу после оплаты — выдача мода.
@@ -441,21 +458,21 @@
     canvas.height = window.innerHeight;
 
     const snowflakes = [];
-    const numSnowflakes = 100;
+    const numSnowflakes = 60; // Уменьшили количество
 
     class Snowflake {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speed = Math.random() * 0.5 + 0.2;
+        this.size = Math.random() * 2 + 1; // Уменьшили размер
+        this.speed = Math.random() * 0.3 + 0.1; // Уменьшили скорость
         this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = Math.random() * 0.01 - 0.005;
+        this.angleSpeed = Math.random() * 0.005 - 0.0025; // Уменьшили вращение
       }
 
       update() {
         this.y += this.speed;
-        this.x += Math.sin(this.angle) * 0.2;
+        this.x += Math.sin(this.angle) * 0.1; // Уменьшили смещение
         this.angle += this.angleSpeed;
 
         if (this.y > canvas.height) {
@@ -467,7 +484,7 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(200, 240, 255, 0.8)';
+        ctx.fillStyle = 'rgba(200, 240, 255, 0.6)'; // Уменьшили прозрачность
         ctx.fill();
       }
     }
