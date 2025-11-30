@@ -10,30 +10,111 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     body {
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #e0e0e0;
       line-height: 1.6;
-      overflow-x: hidden;
+      min-height: 100vh;
+      padding: 0;
+      position: relative;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
+    /* Glassmorphism Panel */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sidebar Widget */
+    .sidebar-widget {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 16px;
+      width: 180px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+
+    .sidebar-widget h3 {
+      font-size: 1.2rem;
+      color: #00f2fe;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-widget p {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Navigation Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #e0e0e0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .tab-btn:hover {
+      background: rgba(79, 172, 254, 0.2);
+    }
+
+    .tab-btn.active {
+      background: rgba(79, 172, 254, 0.4);
+      color: #fff;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
     /* Header */
     header {
-      padding: 100px 0 60px;
+      padding: 80px 0 40px;
       text-align: center;
     }
 
     h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 800;
       background: linear-gradient(90deg, #00f2fe, #4facfe);
       -webkit-background-clip: text;
@@ -43,7 +124,7 @@
     }
 
     .subtitle {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: #aaa;
       max-width: 700px;
       margin: 0 auto 40px;
@@ -84,30 +165,18 @@
       color: #4facfe;
     }
 
-    /* Sections */
-    section {
-      padding: 80px 0;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      text-align: center;
-      color: #fff;
-    }
-
     /* Features */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      gap: 20px;
     }
 
     .feature-card {
       background: rgba(20, 20, 35, 0.7);
       border: 1px solid rgba(79, 172, 254, 0.2);
       border-radius: 12px;
-      padding: 24px;
+      padding: 20px;
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
@@ -117,7 +186,7 @@
     }
 
     .feature-card h3 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: #00f2fe;
       margin-bottom: 12px;
     }
@@ -129,6 +198,7 @@
     .feature-card li {
       padding: 5px 0;
       color: #ccc;
+      font-size: 0.95rem;
     }
 
     .feature-card li::before {
@@ -139,13 +209,13 @@
     /* Pricing */
     #buy {
       background: rgba(15, 12, 41, 0.8);
-      text-align: center;
     }
 
     .pricing {
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin: 30px 0;
       color: #00f2fe;
+      text-align: center;
     }
 
     /* Footer */
@@ -156,40 +226,50 @@
       font-size: 0.9rem;
     }
 
-    /* Glassmorphism */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      margin: 20px 0;
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 300px; }
+      .tabs { flex-direction: column; align-items: center; }
+      .tab-btn { width: 80%; }
+      .sidebar-widget { display: none; } /* Скрываем на мобильных */
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <h1>AnarchyUtils</h1>
-      <p class="subtitle">Идеальный мод для тех, кто ценит стиль, удобство и высокую производительность. Получите превосходство с нашим модом.</p>
-      <div class="hero-buttons">
-        <a href="#buy" class="btn btn-primary">Начать сейчас</a>
-        <a href="#features" class="btn btn-secondary">Узнать больше</a>
+  <!-- Sidebar Widget -->
+  <div class="sidebar-widget">
+    <h3>AnarchyUtils</h3>
+    <p>Улучшенный Minecraft</p>
+  </div>
+
+  <div class="container">
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="home">Главная</button>
+      <button class="tab-btn" data-tab="features">Функции</button>
+      <button class="tab-btn" data-tab="buy">Купить</button>
+    </div>
+
+    <!-- Tab Content -->
+
+    <!-- Home Tab -->
+    <div id="home" class="tab-content active">
+      <header>
+        <h1>AnarchyUtils</h1>
+        <p class="subtitle">Идеальный мод для тех, кто ценит стиль, удобство и высокую производительность. Получите превосходство с нашим модом.</p>
+        <div class="hero-buttons">
+          <a href="#buy" class="btn btn-primary" onclick="switchTab('buy')">Начать сейчас</a>
+          <a href="#features" class="btn btn-secondary" onclick="switchTab('features')">Узнать больше</a>
+        </div>
+      </header>
+      <div class="glass-panel">
+        <p>Этот мод — идеальный инструмент для тех, кто хочет выделиться в Minecraft. Уникальные визуальные эффекты, полезные утилиты и высокая производительность — всё в одном пакете.</p>
       </div>
     </div>
-  </header>
 
-  <section id="features">
-    <div class="container">
-      <h2>Возможности мода</h2>
+    <!-- Features Tab -->
+    <div id="features" class="tab-content">
+      <h2 style="text-align: center; margin: 40px 0 30px;">Возможности мода</h2>
       <div class="features">
         <div class="feature-card">
           <h3>Utility & Combat (Полезное)</h3>
@@ -257,21 +337,25 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <section id="buy">
-    <div class="container">
-      <h2>Получи доступ сейчас</h2>
-      <div class="pricing">Всего 100 ₽</div>
-      <p style="max-width: 600px; margin: 0 auto 30px; color: #bbb;">
-        Оплата переводом по СБП или на карту. Сразу после оплаты — выдача мода.
-      </p>
-      <a href="https://t.me/Montworth" target="_blank" class="btn btn-primary">Купить сейчас</a>
-      <p style="margin-top: 30px; color: #888;">
-        Поддержка: <a href="https://t.me/Montworth" style="color: #4facfe;">@Montworth</a>
-      </p>
+    <!-- Buy Tab -->
+    <div id="buy" class="tab-content">
+      <h2 style="text-align: center; margin: 40px 0 30px;">Получи доступ сейчас</h2>
+      <div class="glass-panel">
+        <div class="pricing">Всего 100 ₽</div>
+        <p style="max-width: 600px; margin: 0 auto 30px; color: #bbb;">
+          Оплата переводом по СБП или на карту. Сразу после оплаты — выдача мода.
+        </p>
+        <div style="text-align: center;">
+          <a href="https://t.me/Montworth" target="_blank" class="btn btn-primary">Купить сейчас</a>
+        </div>
+        <p style="text-align: center; margin-top: 30px; color: #888;">
+          Поддержка: <a href="https://t.me/Montworth" style="color: #4facfe;">@Montworth</a>
+        </p>
+      </div>
     </div>
-  </section>
+
+  </div>
 
   <footer>
     <div class="container">
@@ -280,7 +364,31 @@
     </div>
   </footer>
 
-</body>
-</html>
+  <script>
+    function switchTab(tabName) {
+      // Скрываем все вкладки
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      // Убираем активный стиль с кнопок
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Показываем выбранную вкладку
+      document.getElementById(tabName).classList.add('active');
+      // Делаем кнопку активной
+      document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    }
+
+    // Добавляем обработчики кликов по кнопкам вкладок
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabName = btn.getAttribute('data-tab');
+        switchTab(tabName);
+      });
+    });
+  </script>
+
 </body>
 </html>
