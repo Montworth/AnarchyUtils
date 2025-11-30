@@ -148,19 +148,19 @@
     }
 
     /* Glassmorphism Widget */
-    .glass-widget {
-      background: rgba(20, 40, 60, 0.4);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(74, 158, 255, 0.2);
-      border-radius: 16px;
-      padding: 24px;
-      margin: 40px 0;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      /* Добавляем постоянный дрейф */
-      animation: drift 8s ease-in-out infinite;
-    }
+.glass-widget {
+  background: rgba(20, 40, 60, 0.3); /* Уменьшили прозрачность */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(74, 158, 255, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 40px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Уменьшили тень */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  /* Добавим градиент для мягкости */
+  background: linear-gradient(135deg, rgba(20, 40, 60, 0.2), rgba(30, 60, 90, 0.1));
+}
 
     .glass-widget:hover {
       transform: translateY(-5px);
