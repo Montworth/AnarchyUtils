@@ -14,118 +14,75 @@
     }
 
     body {
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #e0e0e0;
+      background: linear-gradient(135deg, #0a1929, #0c1f2e, #0a1929);
+      color: #e0ffe0;
       line-height: 1.6;
       min-height: 100vh;
-      padding: 0;
+      overflow-x: hidden;
       position: relative;
     }
 
+    /* Анимированные элементы */
+    .floating {
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Container */
     .container {
       max-width: 1000px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Glassmorphism Panel */
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Glassmorphism Widget */
+    .glass-widget {
+      background: rgba(30, 60, 30, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(76, 209, 55, 0.2);
       border-radius: 16px;
-      padding: 24px;
+      padding: 20px;
       margin: 20px 0;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    /* Sidebar Widget */
-    .sidebar-widget {
-      position: fixed;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 16px;
-      width: 180px;
-      text-align: center;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      z-index: 100;
-    }
-
-    .sidebar-widget h3 {
-      font-size: 1.2rem;
-      color: #00f2fe;
-      margin-bottom: 10px;
-    }
-
-    .sidebar-widget p {
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    /* Navigation Tabs */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      padding: 12px 24px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      color: #e0e0e0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .tab-btn:hover {
-      background: rgba(79, 172, 254, 0.2);
-    }
-
-    .tab-btn.active {
-      background: rgba(79, 172, 254, 0.4);
-      color: #fff;
-    }
-
-    /* Tab Content */
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
+    .glass-widget:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(76, 209, 55, 0.3);
     }
 
     /* Header */
     header {
-      padding: 80px 0 40px;
+      padding: 100px 0 60px;
       text-align: center;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      background: linear-gradient(90deg, #4ce037, #7fff5e);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #4ce037; }
+      to { text-shadow: 0 0 15px #7fff5e, 0 0 25px #4ce037; }
     }
 
     .subtitle {
       font-size: 1.3rem;
-      color: #aaa;
+      color: #aaffaa;
       max-width: 700px;
       margin: 0 auto 40px;
     }
@@ -136,20 +93,21 @@
       font-weight: 600;
       font-size: 1.1rem;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       cursor: pointer;
       display: inline-block;
+      margin: 10px;
     }
 
     .btn-primary {
-      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      background: linear-gradient(90deg, #4ce037, #7fff5e);
       color: #000;
       border: none;
     }
 
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+      box-shadow: 0 8px 25px rgba(76, 224, 55, 0.5);
     }
 
     .hero-buttons {
@@ -157,37 +115,39 @@
       justify-content: center;
       gap: 20px;
       margin-top: 30px;
+      flex-wrap: wrap;
     }
 
     .btn-secondary {
       background: transparent;
-      border: 2px solid #4facfe;
-      color: #4facfe;
+      border: 2px solid #4ce037;
+      color: #4ce037;
     }
 
-    /* Features */
+    /* Features Section */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
+      margin-top: 40px;
     }
 
     .feature-card {
-      background: rgba(20, 20, 35, 0.7);
-      border: 1px solid rgba(79, 172, 254, 0.2);
+      background: rgba(20, 40, 20, 0.7);
+      border: 1px solid rgba(76, 209, 55, 0.3);
       border-radius: 12px;
       padding: 20px;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.4s ease, border-color 0.4s ease;
     }
 
     .feature-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(79, 172, 254, 0.6);
+      border-color: rgba(76, 209, 55, 0.7);
     }
 
     .feature-card h3 {
       font-size: 1.3rem;
-      color: #00f2fe;
+      color: #7fff5e;
       margin-bottom: 12px;
     }
 
@@ -197,25 +157,26 @@
 
     .feature-card li {
       padding: 5px 0;
-      color: #ccc;
+      color: #ccffcc;
       font-size: 0.95rem;
     }
 
     .feature-card li::before {
       content: "• ";
-      color: #4facfe;
+      color: #4ce037;
     }
 
-    /* Pricing */
+    /* Pricing Section */
     #buy {
-      background: rgba(15, 12, 41, 0.8);
+      padding: 80px 0;
+      text-align: center;
+      background: rgba(10, 25, 41, 0.6);
     }
 
     .pricing {
       font-size: 2rem;
       margin: 30px 0;
-      color: #00f2fe;
-      text-align: center;
+      color: #7fff5e;
     }
 
     /* Footer */
@@ -228,50 +189,28 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .tabs { flex-direction: column; align-items: center; }
-      .tab-btn { width: 80%; }
-      .sidebar-widget { display: none; } /* Скрываем на мобильных */
+      h1 { font-size: 2.5rem; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar Widget -->
-  <div class="sidebar-widget">
-    <h3>AnarchyUtils</h3>
-    <p>Улучшенный Minecraft</p>
-  </div>
-
   <div class="container">
-    <!-- Navigation Tabs -->
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="home">Главная</button>
-      <button class="tab-btn" data-tab="features">Функции</button>
-      <button class="tab-btn" data-tab="buy">Купить</button>
-    </div>
-
-    <!-- Tab Content -->
-
-    <!-- Home Tab -->
-    <div id="home" class="tab-content active">
-      <header>
-        <h1>AnarchyUtils</h1>
-        <p class="subtitle">Идеальный мод для тех, кто ценит стиль, удобство и высокую производительность. Получите превосходство с нашим модом.</p>
-        <div class="hero-buttons">
-          <a href="#buy" class="btn btn-primary" onclick="switchTab('buy')">Начать сейчас</a>
-          <a href="#features" class="btn btn-secondary" onclick="switchTab('features')">Узнать больше</a>
-        </div>
-      </header>
-      <div class="glass-panel">
-        <p>Этот мод — идеальный инструмент для тех, кто хочет выделиться в Minecraft. Уникальные визуальные эффекты, полезные утилиты и высокая производительность — всё в одном пакете.</p>
+    <header>
+      <h1 class="floating">AnarchyUtils</h1>
+      <p class="subtitle">Идеальный мод для тех, кто ценит стиль, удобство и высокую производительность. Получите превосходство с нашим модом.</p>
+      <div class="hero-buttons">
+        <a href="#buy" class="btn btn-primary">Начать сейчас</a>
+        <a href="#features" class="btn btn-secondary">Узнать больше</a>
       </div>
-    </div>
+    </header>
 
-    <!-- Features Tab -->
-    <div id="features" class="tab-content">
-      <h2 style="text-align: center; margin: 40px 0 30px;">Возможности мода</h2>
+    <section id="features">
+      <h2 style="text-align: center; margin: 40px 0 30px; color: #7fff5e;">Возможности мода</h2>
       <div class="features">
-        <div class="feature-card">
+        <div class="feature-card floating">
           <h3>Utility & Combat (Полезное)</h3>
           <ul>
             <li>Save Swap / Auto Totem: Автоматически берет тотем в левую руку при низком здоровье или по нажатию клавиши.</li>
@@ -279,7 +218,7 @@
             <li>Item To Offhand: Быстрое перемещение предмета из 9-го слота в левую руку.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card floating">
           <h3>👁 Render (Рендер)</h3>
           <ul>
             <li>Zoom: Плавное приближение камеры (как в OptiFine) с настройкой силы зума.</li>
@@ -292,7 +231,7 @@
             <li>Shulker Preview: Показывает содержимое шалкера в подсказке при наведении в инвентаре.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card floating">
           <h3>🎨 Visual (Визуал)</h3>
           <ul>
             <li>China Hat: 3D-шляпа в китайском стиле над головой игрока (и друзей). Поддерживает градиенты и вращение.</li>
@@ -303,7 +242,7 @@
             <li>Shield Sphere: При блокировании щитом вокруг игрока появляется полупрозрачная защитная сфера.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card floating">
           <h3>◧ HUD (Интерфейс)</h3>
           <ul>
             <li>Target HUD: Стильная панель с информацией о цели (3D модель, здоровье с анимацией, броня).</li>
@@ -317,7 +256,7 @@
             <li>HUD Editor: Визуальный редактор для перемещения элементов HUD мышкой.</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card floating">
           <h3>⚙️ Quality of Life (Удобство)</h3>
           <ul>
             <li>Middle Click Friend (MCF): Добавление игрока в друзья нажатием колесика мыши (на друзей не агрится киллаура, у них цветная подсветка/шляпа).</li>
@@ -326,7 +265,7 @@
             <li>Low Fire: Убирает/опускает текстуру огня на экране (визуально).</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card floating">
           <h3>💻 Меню (Hyper GUI)</h3>
           <ul>
             <li>Дизайн: Современный интерфейс в стиле "Glassmorphism" с размытием, анимациями и звуками.</li>
@@ -336,24 +275,21 @@
           </ul>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Buy Tab -->
-    <div id="buy" class="tab-content">
-      <h2 style="text-align: center; margin: 40px 0 30px;">Получи доступ сейчас</h2>
-      <div class="glass-panel">
+    <section id="buy">
+      <h2 style="margin-bottom: 30px; color: #7fff5e;">Получи доступ сейчас</h2>
+      <div class="glass-widget">
         <div class="pricing">Всего 100 ₽</div>
-        <p style="max-width: 600px; margin: 0 auto 30px; color: #bbb;">
+        <p style="max-width: 600px; margin: 0 auto 30px; color: #ccffcc;">
           Оплата переводом по СБП или на карту. Сразу после оплаты — выдача мода.
         </p>
-        <div style="text-align: center;">
-          <a href="https://t.me/Montworth" target="_blank" class="btn btn-primary">Купить сейчас</a>
-        </div>
-        <p style="text-align: center; margin-top: 30px; color: #888;">
-          Поддержка: <a href="https://t.me/Montworth" style="color: #4facfe;">@Montworth</a>
+        <a href="https://t.me/Montworth" target="_blank" class="btn btn-primary">Купить сейчас</a>
+        <p style="margin-top: 30px; color: #aaffaa;">
+          Поддержка: <a href="https://t.me/Montworth" style="color: #4ce037;">@Montworth</a>
         </p>
       </div>
-    </div>
+    </section>
 
   </div>
 
@@ -365,27 +301,17 @@
   </footer>
 
   <script>
-    function switchTab(tabName) {
-      // Скрываем все вкладки
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      // Убираем активный стиль с кнопок
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      // Показываем выбранную вкладку
-      document.getElementById(tabName).classList.add('active');
-      // Делаем кнопку активной
-      document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-    }
-
-    // Добавляем обработчики кликов по кнопкам вкладок
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tabName = btn.getAttribute('data-tab');
-        switchTab(tabName);
+    // Плавная прокрутка к якорю
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80, // отступ сверху
+            behavior: 'smooth'
+          });
+        }
       });
     });
   </script>
