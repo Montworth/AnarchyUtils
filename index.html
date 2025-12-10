@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AlexeyClient — Улучшенный Minecraft</title>
-  <meta name="description" content="Utility & Combat, Render, Visual, HUD и многое другое. Улучшите игровой опыт с AlexeyClient.">
+  <title>AnarchyUtils — Улучшенный Minecraft</title>
+  <meta name="description" content="Utility & Combat, Render, Visual, HUD и многое другое. Улучшите игровой опыт с AnarchyUtils.">
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
     /* ОБЩИЕ СТИЛИ */
@@ -12,33 +12,17 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Roboto Mono', 'Courier New', monospace; /* Техно-шрифт с моношириной */
     }
 
     body {
       /* Глубокий темно-синий градиент */
-      background: linear-gradient(135deg, #020817, #101c38, #020817);
-      color: #e6eefd;
+      background: linear-gradient(135deg, #020817, #0a1228, #020817);
+      color: #ffffff; /* Ярко-белый текст для контраста */
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
-    }
-
-    /* Отражение сайта (Обновлено на более тёмный оттенок) */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgba(30, 0, 70, 0.05)" /></svg>');
-      background-size: 100px;
-      opacity: 0.15;
-      transform: scaleY(-1);
-      pointer-events: none;
-      z-index: -1;
     }
 
     /* Canvas для частиц */
@@ -78,26 +62,30 @@
     }
 
     h1 {
-      font-size: 3.2rem;
+      font-size: 4rem; /* Увеличил размер */
       font-weight: 800;
-      /* Новый градиент: темно-синий -> фиолетовый */
-      background: linear-gradient(90deg, #5b87f4, #8a48ff);
+      letter-spacing: -1px; /* Горизонтальное сжатие */
+      /* Градиент: глубокий синий -> яркий циан */
+      background: linear-gradient(90deg, #001f4d, #00b4d8, #90e0ef);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 20px;
-      /* Обновленное свечение */
-      animation: glow 2s ease-in-out infinite alternate;
+      /* Свечение */
+      text-shadow: 0 0 10px rgba(0, 180, 216, 0.5),
+                   0 0 20px rgba(0, 180, 216, 0.3),
+                   0 0 30px rgba(144, 224, 239, 0.2);
+      animation: glow 3s ease-in-out infinite alternate;
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 5px #5b87f4; }
-      to { text-shadow: 0 0 15px #8a48ff, 0 0 25px #5b87f4; }
+      from { text-shadow: 0 0 10px rgba(0, 180, 216, 0.5); }
+      to { text-shadow: 0 0 20px rgba(0, 180, 216, 0.7), 0 0 30px rgba(144, 224, 239, 0.4); }
     }
 
     .subtitle {
       font-size: 1.3rem;
-      color: #aebffc; /* Светло-фиолетовый */
+      color: #90e0ef; /* Ярко-циановый */
       max-width: 700px;
       margin: 0 auto 40px;
     }
@@ -112,19 +100,20 @@
       cursor: pointer;
       display: inline-block;
       margin: 10px;
+      border: none;
+      outline: none;
     }
 
     .btn-primary {
-      /* Основной градиент: темно-синий -> фиолетовый */
-      background: linear-gradient(90deg, #5b87f4, #8a48ff);
-      color: #000;
-      border: none;
+      /* Градиент: глубокий синий -> яркий циан */
+      background: linear-gradient(90deg, #001f4d, #00b4d8);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
     }
 
     .btn:hover {
       transform: translateY(-3px);
-      /* Тень под цвет нового градиента */
-      box-shadow: 0 8px 25px rgba(138, 72, 255, 0.5);
+      box-shadow: 0 8px 25px rgba(0, 180, 216, 0.6); /* Тень под цвет градиента */
     }
 
     .hero-buttons {
@@ -137,30 +126,26 @@
 
     .btn-secondary {
       background: transparent;
-      /* Обновленная граница */
-      border: 2px solid #5b87f4;
-      color: #5b87f4;
+      border: 2px solid #00b4d8; /* Циановая граница */
+      color: #00b4d8;
     }
 
-    /* Glassmorphism Widget (Темная версия) */
-    .glass-widget {
-      /* Более темный фон для эффекта "Ночное стекло" */
-      background: rgba(30, 45, 80, 0.4); 
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      /* Обновленная граница */
-      border: 1px solid rgba(91, 135, 244, 0.3);
+    /* Widget (Технологичный стиль, без стекла) */
+    .tech-widget {
+      background: rgba(10, 30, 60, 0.85); /* Темно-синий с низкой прозрачностью */
+      border: 1px solid rgba(0, 180, 216, 0.4); /* Циановая граница */
       border-radius: 16px;
       padding: 24px;
       margin: 40px 0;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+                  inset 0 0 15px rgba(0, 180, 216, 0.1); /* Внутреннее свечение */
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    .glass-widget:hover {
+    .tech-widget:hover {
       transform: translateY(-5px);
-      /* Тень под цвет нового градиента */
-      box-shadow: 0 12px 40px rgba(138, 72, 255, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 180, 216, 0.3),
+                  inset 0 0 20px rgba(0, 180, 216, 0.15);
     }
 
     /* Features */
@@ -172,25 +157,22 @@
     }
 
     .feature-card {
-      /* Более темный фон карточки */
-      background: rgba(10, 20, 40, 0.8);
-      /* Обновленная граница */
-      border: 1px solid rgba(91, 135, 244, 0.3);
+      background: rgba(15, 35, 65, 0.9); /* Темно-синий фон карточки */
+      border: 1px solid rgba(0, 180, 216, 0.3); /* Циановая граница */
       border-radius: 12px;
       padding: 20px;
       transition: transform 0.4s ease, border-color 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
     .feature-card:hover {
       transform: translateY(-5px);
-      /* Обновленный цвет границы при наведении */
-      border-color: rgba(138, 72, 255, 0.7);
+      border-color: #90e0ef; /* Ярко-циановый при наведении */
     }
 
     .feature-card h3 {
       font-size: 1.3rem;
-      /* Цвет заголовка - фиолетовый */
-      color: #8a48ff; 
+      color: #90e0ef; /* Ярко-циановый */
       margin-bottom: 12px;
     }
 
@@ -200,42 +182,40 @@
 
     .feature-card li {
       padding: 5px 0;
-      color: #d8e5ff; /* Более светлый текст для контраста */
+      color: #e6f7ff; /* Очень светлый циан для текста */
       font-size: 0.95rem;
     }
 
     .feature-card li::before {
       content: "• ";
-      /* Цвет маркера */
-      color: #5b87f4;
+      color: #00b4d8; /* Циановый маркер */
     }
 
     /* Pricing */
     #buy {
       padding: 80px 0;
       text-align: center;
-      /* Темный фон секции */
-      background: rgba(10, 20, 35, 0.7);
+      background: rgba(5, 20, 40, 0.85); /* Темный фон секции */
     }
 
     .pricing {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin: 30px 0;
-      /* Цвет цены - фиолетовый */
-      color: #8a48ff;
+      color: #90e0ef; /* Ярко-циановый */
     }
 
     /* Section Headings */
     #about h2, #menu-preview h2, section h2 {
       text-align: center;
       margin-bottom: 50px;
-      /* Цвет заголовка - фиолетовый */
-      color: #8a48ff;
+      color: #90e0ef; /* Ярко-циановый */
+      font-size: 2rem;
+      text-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
     }
 
     .about-text {
       font-size: 1.1rem;
-      color: #d8e5ff; /* Светлый текст */
+      color: #e6f7ff; /* Светлый текст */
       line-height: 1.8;
       margin-bottom: 30px;
     }
@@ -249,8 +229,7 @@
     .menu-image-container img {
       max-width: 100%;
       border-radius: 16px;
-      /* Обновленная граница */
-      border: 1px solid rgba(91, 135, 244, 0.3);
+      border: 1px solid rgba(0, 180, 216, 0.3);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
 
@@ -263,13 +242,13 @@
     }
     
     footer a {
-        color: #5b87f4;
+        color: #00b4d8;
         text-decoration: none;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
+      h1 { font-size: 3rem; } /* Уменьшенный размер на мобильных */
       .hero-buttons { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 300px; }
     }
@@ -281,9 +260,9 @@
 
   <div class="container">
     <header>
-      <h1 class="fade-in-up">AlexeyClient</h1>
+      <h1 class="fade-in-up">AnarchyUtils</h1>
       <p class="subtitle fade-in-up">Идеальный мод для тех, кто ценит стиль, удобство и высокую производительность. Получите превосходство с нашим клиентом.</p>
-      <p style="text-align: center; font-size: 1.2rem; color: #8a48ff; margin: 20px 0;">ПОДДЕРЖИВАЕМАЯ ВЕРСИЯ: FABRIC 1.21.4</p>
+      <p style="text-align: center; font-size: 1.2rem; color: #90e0ef; margin: 20px 0;">ПОДДЕРЖИВАЕМАЯ ВЕРСИЯ: FABRIC 1.21.4</p>
       <div class="hero-buttons fade-in-up">
         <a href="#buy" class="btn btn-primary">Начать сейчас</a>
         <a href="#features" class="btn btn-secondary">Узнать больше</a>
@@ -291,13 +270,13 @@
     </header>
 
     <section id="about" class="fade-in-up">
-      <h2>О проекте AlexeyClient</h2>
-      <div class="glass-widget">
+      <h2>О проекте AnarchyUtils</h2>
+      <div class="tech-widget">
         <p class="about-text">
-          AlexeyClient — это не просто мод для Minecraft, это инструмент для тех, кто хочет выделиться и получить максимум от игрового процесса. Наш мод объединяет в себе мощные утилиты, визуальные улучшения, удобный интерфейс и безопасность. Мы создаём продукт, который делает игру комфортнее, быстрее и красивее.
+          AnarchyUtils — это не просто мод для Minecraft, это инструмент для тех, кто хочет выделиться и получить максимум от игрового процесса. Наш мод объединяет в себе мощные утилиты, визуальные улучшения, удобный интерфейс и безопасность. Мы создаём продукт, который делает игру комфортнее, быстрее и красивее.
         </p>
         <p class="about-text">
-          Разработка ведётся с 2025 года, и с каждым обновлением мы добавляем всё больше функций, улучшаем производительность и делаем интерфейс ещё удобнее. Мы стремимся к тому, чтобы AlexeyClient стал неотъемлемой частью игрового опыта каждого пользователя.
+          Разработка ведётся с 2025 года, и с каждым обновлением мы добавляем всё больше функций, улучшаем производительность и делаем интерфейс ещё удобнее. Мы стремимся к тому, чтобы AnarchyUtils стал неотъемлемой частью игрового опыта каждого пользователя.
         </p>
         <p class="about-text">
           Наши пользователи получают:
@@ -312,7 +291,7 @@
     </section>
 
     <section id="features" class="fade-in-up">
-      <h2 style="text-align: center; margin: 40px 0 30px; color: #8a48ff;">Возможности мода</h2>
+      <h2 style="text-align: center; margin: 40px 0 30px; color: #90e0ef;">Возможности мода</h2>
       <div class="features">
         <div class="feature-card">
           <h3>Utility & Combat (Полезное)</h3>
@@ -383,18 +362,18 @@
 
     <section id="menu-preview" class="fade-in-up">
       <h2>Предпросмотр меню</h2>
-      <div class="glass-widget">
+      <div class="tech-widget">
         <div class="menu-image-container">
-          <img src="modmenu.jpg" alt="AlexeyClient Menu Preview">
+          <img src="modmenu.jpg" alt="AnarchyUtils Menu Preview">
         </div>
       </div>
     </section>
 
     <section class="fade-in-up">
-      <h2 style="text-align: center; margin: 40px 0 30px; color: #8a48ff;">Что говорят пользователи</h2>
-      <div class="glass-widget">
+      <h2 style="text-align: center; margin: 40px 0 30px; color: #90e0ef;">Что говорят пользователи</h2>
+      <div class="tech-widget">
         <p class="about-text">
-          "AlexeyClient — это мод, которого мне не хватало. Он не тормозит, красиво выглядит и удобен в использовании. Спасибо разработчику!" — <strong>IIuoneR</strong>
+          "AnarchyUtils — это мод, которого мне не хватало. Он не тормозит, красиво выглядит и удобен в использовании. Спасибо разработчику!" — <strong>IIuoneR</strong>
         </p>
         <p class="about-text">
           "Наконец-то нашёл клиента, который не лагает на слабом ПК, но при этом имеет кучу функций. HWID — это спасение." — <strong>Anim4ik</strong>
@@ -406,11 +385,11 @@
     </section>
 
     <section class="fade-in-up">
-      <h2 style="text-align: center; margin: 40px 0 30px; color: #8a48ff;">Часто задаваемые вопросы</h2>
-      <div class="glass-widget">
+      <h2 style="text-align: center; margin: 40px 0 30px; color: #90e0ef;">Часто задаваемые вопросы</h2>
+      <div class="tech-widget">
         <p class="about-text">
           <strong>Q: Совместим ли мод с другими модами?</strong><br>
-          A: Да, AlexeyClient совместим с большинством популярных модов. Мы тестируем совместимость с Forge и Fabric.
+          A: Да, AnarchyUtils совместим с большинством популярных модов. Мы тестируем совместимость с Forge и Fabric.
         </p>
         <p class="about-text">
           <strong>Q: Можно ли вернуть деньги?</strong><br>
@@ -425,14 +404,15 @@
 
     <section id="buy" class="fade-in-up">
       <h2>Получи доступ сейчас</h2>
-      <div class="glass-widget">
+      <div class="tech-widget">
         <div class="pricing">Всего 100 ₽</div>
-        <p style="max-width: 600px; margin: 0 auto 30px; color: #d8e5ff;">
+        <p style="max-width: 600px; margin: 0 auto 30px; color: #e6f7ff;">
           Оплата переводом по СБП или на карту. Сразу после оплаты — выдача мода.
         </p>
         <a href="https://t.me/AnarchyUtils" target="_blank" class="btn btn-primary">Купить сейчас</a>
-        <p style="margin-top: 30px; color: #aebffc;">
-          Поддержка: <a href="https://t.me/Montworth" style="color: #5b87f4;">@Montworth</a>
+        <p style="margin-top: 30px; color: #90e0ef;">
+          Поддержка: <a href="https://t.me/Montworth" style="color: #00b4d8;">@Montworth</a> | 
+          Баги: <a href="https://t.me/every_funny" style="color: #00b4d8;">@every_funny</a>
         </p>
       </div>
     </section>
@@ -441,7 +421,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 AlexeyClient. Все права защищены.</p>
+      <p>&copy; 2025 AnarchyUtils. Все права защищены.</p>
       <p>Мод разработан исключительно для личного использования.</p>
     </div>
   </footer>
@@ -478,24 +458,23 @@
       });
     });
 
-    // Анимация частиц
+    // Анимация частиц (снег)
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     const particles = [];
-    const numParticles = 100;
+    const numParticles = 150; // Увеличил количество для более плотного эффекта
 
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        /* Цвет частиц: темно-синий/фиолетовый */
-        this.color = `rgba(138, 72, 255, ${Math.random() * 0.4 + 0.1})`; 
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = Math.random() * 0.5 + 0.2; // Снег падает вниз
+        this.color = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.3})`; // Белый с прозрачностью
       }
 
       update() {
@@ -503,7 +482,10 @@
         this.y += this.speedY;
 
         if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-        if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+        if (this.y > canvas.height) {
+            this.y = 0; // Перезапускаем снежинку сверху
+            this.x = Math.random() * canvas.width;
+        }
       }
 
       draw() {
@@ -540,4 +522,3 @@
 
 </body>
 </html>
-
